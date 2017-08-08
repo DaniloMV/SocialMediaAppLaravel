@@ -9,8 +9,13 @@
 
                 <div class="panel-body">
                    Edit Your Profile
-                   <form action="{{ route('profile.update') }}" method="post">
+                   <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
                    {{csrf_field()}}
+                   
+                    <div class="form-group">
+                    <label for="avatar">Profile Pic</label>
+                    <input type="file" name="avatar" class="form-control" accept="image/*">
+                    </div>
                     <div class="form-group">
                     <label for="location">location</label>
                     <input type="text" name="location" value="{{$info->location}}" class="form-control" required>

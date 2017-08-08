@@ -33,6 +33,14 @@ class ProfilesController extends Controller
               'location' => $r->location,
               'about' =>    $r->about
           ]);
+           
+           if($r->hasFile('avatar'))
+           {
+               Auth::user()->update([
+                   
+                   'avatar' => $r->avatar->store('public/avatars')
+               ]);
+           }
 
          // dd(Auth::user()->profile);
           session::flash('sucess', 'profile updated');
